@@ -81,13 +81,19 @@
     } catch { notify("Veredito registrado nesta sessão; não foi possível confirmar a cópia na Canva Sheet."); }
   }
 
+  /* Pistas com lupa na cena principal. Locais com cena interna (o armário) valem pelas pistas que guardam. */
+  const sceneClueIds = ["E1","E3","E4","E5","E6"];
+  function collectibleEvidence() {
+    return sceneClueIds.flatMap(id => evidence.find(e => e.id === id)?.hotspots || [id]);
+  }
   function updateProgress() {
-    /* Detalhes internos (como os do armário) aparecem nos Insights, mas o progresso conta só as 10 pistas principais. */
-    const main = evidence.filter(e => !e.parent);
-    const count = new Set(state.found.filter(id => main.some(e => e.id === id))).size;
-    $("#count").textContent = `${count} de ${main.length} evidências examinadas`;
+    const collectible = collectibleEvidence();
+    const count = collectible.filter(id => state.found.includes(id)).length;
+    $("#count").textContent = `${count} de ${collectible.length} evidências examinadas`;
+    $("#progress").setAttribute("aria-valuemax",String(collectible.length));
     $("#progress").setAttribute("aria-valuenow",String(count));
-    $("#progress-fill").style.width = `${count / main.length * 100}%`;
+    $("#progress-fill").style.width = `${count / collectible.length * 100}%`;
+    renderExpertHelp(count,collectible.length);
     renderInsights();
     document.querySelectorAll("[data-marker]").forEach(button => {
       const visited = state.found.includes(button.dataset.marker);
@@ -126,6 +132,46 @@
       syncScenePan();
     }
     window.scrollTo(0,sceneMemory && !sceneMemory.zoomed ? sceneMemory.pageY : 0);
+  }
+  /* Ajuda de especialista: liberada quando todas as evidências coletáveis foram examinadas.
+     As dicas abrem uma a uma, como a tradução do e-mail. */
+  const expertHints = [
+    "Observe quem mandou o e-mail.\nFoi enviado ou recebido?",
+    "É muito importante saber o país onde o crime foi cometido.\nPara descobrir, preste atenção nos edifícios que aparecem na cena.",
+    "Repare na hora que a mulher de Jakob envia as mensagens e verifique se há uma mentira na conversa."
+  ];
+  let expertUnlocked = null;
+  function renderExpertHelp(count,total) {
+    const unlocked = count >= total;
+    $("#expert-button").disabled = !unlocked;
+    $("#expert-help").classList.toggle("unlocked",unlocked);
+    $("#expert-status").textContent = unlocked
+      ? `Desbloqueado! As ${total} evidências foram examinadas.`
+      : `Bloqueado · examinem todas as evidências para pedir ajuda: ${count} de ${total}.`;
+    $("#expert-progress").setAttribute("aria-valuemax",String(total));
+    $("#expert-progress").setAttribute("aria-valuenow",String(count));
+    $("#expert-progress-fill").style.width = `${count / total * 100}%`;
+    if (expertUnlocked === false && unlocked) notify("Ajuda de um especialista desbloqueada! Ela está abaixo da cena do crime.");
+    expertUnlocked = unlocked;
+  }
+  function openExpertHelp() {
+    const body = document.createElement("div");
+    const portrait = document.createElement("figure"), portraitImg = document.createElement("img");
+    portrait.className = "expert-portrait";
+    portraitImg.src = "Especialista.png";portraitImg.alt = "Retrato do especialista, em silhueta, segurando uma lupa";
+    portrait.append(portraitImg);body.append(portrait);
+    expertHints.forEach((text,index) => {
+      const block = document.createElement("div");block.className = "hint-block";
+      const hint = paperParagraph(text);hint.hidden = true;hint.id = `expert-hint-${index + 1}`;
+      const toggle = actionButton(`MOSTRAR DICA ${index + 1}`,event => {
+        hint.hidden = !hint.hidden;
+        event.currentTarget.textContent = hint.hidden ? `MOSTRAR DICA ${index + 1}` : `OCULTAR DICA ${index + 1}`;
+        event.currentTarget.setAttribute("aria-expanded",String(!hint.hidden));
+      },"ui-btn accent");
+      toggle.setAttribute("aria-expanded","false");toggle.setAttribute("aria-controls",hint.id);
+      block.append(toggle,hint);body.append(block);
+    });
+    openModal("Ajuda de um especialista","ESPECIALISTA · DICAS",body,[["VOLTAR À CENA",closeModal,"ui-btn primary"]]);
   }
   function actionButton(text,handler,cls = "ui-btn") {
     const button = document.createElement("button");
@@ -227,7 +273,7 @@
     button.addEventListener("click",() => openEvidence(e.id));
     return button;
   }
-  evidence.filter(e => ["E1","E3","E4","E5","E6"].includes(e.id)).forEach(e => $("#scene-frame").append(createMarker(e)));
+  evidence.filter(e => sceneClueIds.includes(e.id)).forEach(e => $("#scene-frame").append(createMarker(e)));
 
   /* Zoom da cena: a imagem ocupa toda a altura entre o cabeçalho e a barra de abas,
      e o controle no topo rola a cena na horizontal. */
@@ -263,6 +309,7 @@
     }
   }
   $("#scene-zoom-in").addEventListener("click",() => setSceneZoom(true));
+  $("#expert-button").addEventListener("click",openExpertHelp);
   $("#scene-zoom-out").addEventListener("click",() => setSceneZoom(false));
   $("#scene-pan").addEventListener("input",() => {
     const viewport = $("#scene-viewport");

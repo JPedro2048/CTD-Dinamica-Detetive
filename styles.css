@@ -82,7 +82,7 @@ body.app-shell{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
 .scene-pan{flex:1;min-width:0;height:44px;accent-color:var(--yellow);cursor:pointer}
 .scene-pan:disabled{opacity:.4;cursor:default}
 #scene.scene-zoomed{position:fixed;left:0;right:0;z-index:25;display:flex;flex-direction:column;background:var(--ink)}
-#scene.scene-zoomed>p,#scene.scene-zoomed>h2,#scene.scene-zoomed .scene-zoom-in{display:none}
+#scene.scene-zoomed>p,#scene.scene-zoomed>h2,#scene.scene-zoomed .scene-zoom-in,#scene.scene-zoomed .expert-help{display:none}
 #scene.scene-zoomed .scene-viewport{flex:1;min-height:0;margin:0;display:flex;justify-content:flex-start;justify-content:safe center;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
 #scene.scene-zoomed .scene-viewport::-webkit-scrollbar{display:none}
 #scene.scene-zoomed .scene-frame{flex-shrink:0;height:100%;width:max-content;max-width:none;margin:0;border:0;border-radius:0}
@@ -100,3 +100,19 @@ body.scene-zoom-open{overflow:hidden}
 /* Destaque roxo para ações secundárias dentro das pistas (ex.: mostrar tradução). */
 .accent{background:var(--purple)!important;color:var(--white)!important;border-color:var(--purple)!important}
 .accent:hover{background:var(--white)!important;color:var(--purple)!important;border-color:var(--white)!important}
+/* Ajuda de especialista: botão roxo abaixo da cena, bloqueado até reunir todas as evidências. */
+.expert-help{max-width:1100px;margin-left:auto;margin-right:auto;display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;background:var(--wave-dark) var(--ink);border:3px solid var(--purple);border-radius:22px;padding:16px 18px}
+.expert-help.unlocked{border-color:var(--yellow)}
+.expert-button{display:inline-flex;align-items:center;gap:10px}
+.expert-button svg{width:20px;height:20px;flex-shrink:0}
+.expert-button .expert-icon-unlocked,.expert-help.unlocked .expert-button .expert-icon-locked{display:none}
+.expert-help.unlocked .expert-button .expert-icon-unlocked{display:inline-block}
+.expert-button:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.expert-button:disabled:hover{background:var(--purple)!important;color:var(--white)!important;border-color:var(--purple)!important}
+.expert-meter{flex:1 1 220px;min-width:0}
+.expert-status{margin:0 0 6px;color:#f3eaff;font-weight:600}
+.expert-help.unlocked .expert-status{color:var(--yellow)}
+.hint-block{margin-top:14px}.hint-block .paper{margin-top:10px}
+/* Retrato do especialista: silhueta escura sobre círculo amarelo, como as ilustrações redondas do template. */
+.expert-portrait{width:min(180px,55%);aspect-ratio:1;margin:4px auto 6px;border-radius:50%;overflow:hidden;background:var(--yellow);border:5px solid var(--yellow);box-shadow:0 0 0 6px var(--ink),0 0 0 9px var(--purple);display:flex;align-items:flex-end;justify-content:center}
+.expert-portrait img{display:block;width:82%;height:auto;max-height:100%}
