@@ -192,7 +192,7 @@
       body.append(actionButton("MOSTRAR TRADUÇÃO EM PORTUGUÊS",event => {
         translation.hidden = !translation.hidden;
         event.currentTarget.textContent = translation.hidden ? "MOSTRAR TRADUÇÃO EM PORTUGUÊS" : "OCULTAR TRADUÇÃO";
-      }),translation);
+      },"ui-btn accent"),translation);
     }
     if (id === "E10") {
       const list = document.createElement("div");
@@ -206,11 +206,11 @@
       body.append(list,more);renderExtras();
     }
     const back = e.parent
-      ? ["VOLTAR AO ARMÁRIO",() => openEvidence(e.parent),"ui-btn"]
-      : ["VOLTAR À CENA",closeModal,"ui-btn"];
+      ? ["VOLTAR AO ARMÁRIO",() => openEvidence(e.parent),"ui-btn primary"]
+      : ["VOLTAR À CENA",closeModal,"ui-btn primary"];
     openModal(e.name,`${e.id} · ${e.origin}`,body,[
       back,
-      ["ABRIR CADERNO",() => {closeModal(false);go("notebook");},"ui-btn primary"]
+      ["ABRIR CADERNO",() => {closeModal(false);go("notebook");},"ui-btn"]
     ]);
     if (window.lucide) lucide.createIcons();
     /* A ligação toca ao abrir a pista; o clique na lupa conta como interação para o navegador. */

@@ -97,3 +97,6 @@ body.scene-zoom-open{overflow:hidden}
 /* Arrastar para rolar: cursor de "mão" onde há conteúdo a rolar; nada é selecionado durante o arrasto. */
 #scene.scene-zoomed .scene-viewport.pan-scroll,.tab-bar .nav-buttons.pan-scroll{cursor:grab}
 .pan-scroll.is-panning,.pan-scroll.is-panning *{cursor:grabbing!important;user-select:none}
+/* Destaque roxo para ações secundárias dentro das pistas (ex.: mostrar tradução). */
+.accent{background:var(--purple)!important;color:var(--white)!important;border-color:var(--purple)!important}
+.accent:hover{background:var(--white)!important;color:var(--purple)!important;border-color:var(--white)!important}
