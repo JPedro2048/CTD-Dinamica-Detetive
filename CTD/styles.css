@@ -1,0 +1,99 @@
+/* Paleta e tipografia do template "Reino Prägnanz": roxo #8e45ed, amarelo #efdd2b, branco e preto.
+   Futura (títulos em negrito, corpo regular) com Jost como alternativa web; Enriqueta nos documentos. */
+:root{
+  --purple:#8e45ed;--purple-deep:#6f2fd0;--yellow:#efdd2b;--white:#fff;--ink:#161616;--charcoal:#1b1b1b;
+  --font-sans:"Futura PT","Futura","Jost",sans-serif;--font-serif:"Enriqueta",Georgia,serif;
+  --wave-purple:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg fill='none' stroke='%239650ef' stroke-width='16' stroke-linecap='round'%3E%3Cpath d='M-60 30q30-30 60 0t60 0 60 0 60 0 60 0 60 0'/%3E%3Cpath d='M-60 90q30-30 60 0t60 0 60 0 60 0 60 0 60 0'/%3E%3Cpath d='M-60 150q30-30 60 0t60 0 60 0 60 0 60 0 60 0'/%3E%3Cpath d='M-60 210q30-30 60 0t60 0 60 0 60 0 60 0 60 0'/%3E%3C/g%3E%3C/svg%3E");
+  --wave-yellow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg fill='none' stroke='%23f3e348' stroke-width='16' stroke-linecap='round'%3E%3Cpath d='M-60 30q30-30 60 0t60 0 60 0 60 0 60 0 60 0'/%3E%3Cpath d='M-60 90q30-30 60 0t60 0 60 0 60 0 60 0 60 0'/%3E%3Cpath d='M-60 150q30-30 60 0t60 0 60 0 60 0 60 0 60 0'/%3E%3Cpath d='M-60 210q30-30 60 0t60 0 60 0 60 0 60 0 60 0'/%3E%3C/g%3E%3C/svg%3E");
+  --wave-dark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg fill='none' stroke='%23212121' stroke-width='16' stroke-linecap='round'%3E%3Cpath d='M-60 30q30-30 60 0t60 0 60 0 60 0 60 0 60 0'/%3E%3Cpath d='M-60 90q30-30 60 0t60 0 60 0 60 0 60 0 60 0'/%3E%3Cpath d='M-60 150q30-30 60 0t60 0 60 0 60 0 60 0 60 0'/%3E%3Cpath d='M-60 210q30-30 60 0t60 0 60 0 60 0 60 0 60 0'/%3E%3C/g%3E%3C/svg%3E");
+}
+*{box-sizing:border-box}body{margin:0;width:100%;color:var(--white);font-family:var(--font-sans);line-height:1.5}button,input,textarea{font:inherit}button{cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--white);outline-offset:3px;box-shadow:0 0 0 6px var(--ink)}
+/* O Canva grava a cor de fundo inline no <body>; a textura entra por cima dessa cor. */
+.app-shell{width:100%;min-height:100%;background-color:var(--purple);background-image:var(--wave-purple)!important}
+.topbar{background:var(--wave-dark) var(--ink);border-bottom:4px solid var(--yellow);position:sticky;top:0;z-index:20}
+.main-inner{max-width:1250px;margin:auto;padding:24px}.nav-buttons{display:flex;gap:8px;overflow-x:auto;padding:12px 0;scrollbar-color:var(--yellow) transparent;scrollbar-width:thin}.nav-buttons button{white-space:nowrap;flex-shrink:0}
+.ui-btn{border:2px solid var(--white);background:var(--ink);color:var(--white);border-radius:999px;padding:10px 20px;min-height:44px;font-weight:700;letter-spacing:.06em;transition:transform .2s,background .2s,color .2s}
+.ui-btn:hover{background:var(--white)!important;color:var(--purple)!important;transform:translateY(-2px)}
+.ui-btn[aria-current=page],.primary{background:var(--yellow)!important;color:var(--ink)!important;border-color:var(--yellow)!important}
+.primary:hover{background:var(--white)!important;border-color:var(--white)!important}
+.ui-btn:disabled{opacity:.55;cursor:wait}.danger{border-color:var(--yellow)}
+.panel{background:var(--wave-dark) var(--charcoal);border-radius:24px;padding:24px;box-shadow:0 18px 40px #2a0a5e55}
+.panel-yellow{background:var(--wave-yellow) var(--yellow);color:var(--ink)}
+.panel-yellow .ui-btn{border-color:var(--ink)}
+.paper{background:var(--white);color:var(--ink);border-radius:18px;padding:20px;font-family:var(--font-serif);border:3px solid var(--yellow)}
+.evidence-figure{margin:16px 0 0;background:var(--white);border:3px solid var(--yellow);border-radius:18px;overflow:hidden}
+.evidence-figure img{display:block;width:100%;max-height:60vh;object-fit:contain;background:var(--white)}
+.evidence-figure.round{width:min(320px,80%);margin:16px auto 0;aspect-ratio:1;border-radius:50%;border-width:5px;box-shadow:0 0 0 6px var(--ink)}
+.evidence-figure.round img{height:100%;max-height:none;object-fit:cover}
+.sub-scene{margin-top:16px;border-width:4px;border-radius:20px}
+.paper p{white-space:pre-wrap;overflow-wrap:anywhere}.eyebrow{color:var(--yellow);font-weight:700;font-size:.8rem;letter-spacing:.24em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--font-sans);font-weight:800;letter-spacing:.03em;margin:.2em 0}h1{line-height:1.05}h2{line-height:1.15}h3{font-size:1.35rem}
+#modal-heading{color:var(--yellow);font-size:2rem}
+.muted{color:#f3eaff}[hidden],.hidden{display:none!important}
+.field{display:block;margin:16px 0}.field label{display:block;font-weight:700;margin-bottom:7px}
+.field textarea,.field input,.name-input{width:100%;background:var(--white);border:2px solid transparent;border-radius:14px;color:var(--ink);padding:12px 14px;min-height:44px}
+.panel-yellow .field textarea{border-color:var(--ink)}
+.field textarea{min-height:105px;resize:vertical}
+.scene-frame{position:relative;max-width:1100px;margin:auto;border:5px solid var(--yellow);border-radius:28px;overflow:hidden;background:var(--ink)}
+.scene-frame svg,.scene-frame img{display:block;width:100%;height:auto}
+.scene-hotspots{position:absolute;inset:0;pointer-events:none}.marker{position:absolute;transform:translate(-50%,-50%);height:44px;min-width:44px;border-radius:50%;border:3px solid var(--yellow);background:var(--purple);color:var(--white);display:grid;place-items:center;box-shadow:0 0 0 4px #16161666;transition:transform .18s,box-shadow .18s,background .18s;pointer-events:auto;touch-action:manipulation}.marker svg{width:18px;height:18px}
+.marker:hover,.marker:focus-visible{transform:translate(-50%,-50%) scale(1.16);box-shadow:0 0 0 8px #efdd2b88}.marker.done{background:var(--yellow);color:var(--ink);border-color:var(--ink);box-shadow:0 0 0 4px #efdd2b66}
+.suspect-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:18px}
+.portrait{width:70px;height:70px;border-radius:50%;background:var(--yellow);color:var(--purple);font-weight:800;display:grid;place-items:center;font-size:28px;border:4px solid var(--white)}
+.panel-yellow .portrait{background:var(--purple);color:var(--white);border-color:var(--ink)}
+.overlay{position:fixed;inset:0;background:#2a0a5ee6;z-index:40;display:grid;place-items:center;padding:16px}.dialog{max-height:90%;overflow:auto;width:min(760px,100%);border:3px solid var(--yellow)}
+.progress-track{height:10px;background:#ffffff26;border-radius:999px;overflow:hidden}.progress-fill{height:100%;background:var(--yellow);transition:width .3s}
+.tab-row{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}
+.intro-art{width:100%;max-width:440px;margin:auto;border-radius:50%;aspect-ratio:1;overflow:hidden;border:6px solid var(--yellow);background:var(--ink);box-shadow:0 0 0 10px var(--ink)}.intro-art svg{width:100%;height:100%;display:block;object-fit:cover}
+.envelope{display:grid;place-items:center;position:relative;width:min(440px,100%);aspect-ratio:1.45;margin:30px auto;border:4px solid var(--yellow);border-radius:24px;background:var(--wave-dark) var(--ink);box-shadow:0 20px 55px #2a0a5e88;color:var(--ink);overflow:hidden}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(150deg,transparent 49.4%,var(--yellow) 49.6%,var(--yellow) 50.4%,transparent 50.6%),linear-gradient(30deg,transparent 49.4%,var(--yellow) 49.6%,var(--yellow) 50.4%,transparent 50.6%)}
+.envelope span{position:relative;z-index:1;background:var(--yellow);border:3px solid var(--ink);border-radius:999px;padding:15px 25px;font-weight:800;letter-spacing:.2em}
+#status{min-height:26px;color:var(--yellow);font-weight:600}.reveal{animation:appear .45s ease both}@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:650px){.main-inner{padding:16px}.panel{padding:18px}.marker{height:40px;min-width:40px}.topbar .main-inner{padding-top:10px;padding-bottom:7px}.intro-art{max-width:300px}}
+.evidence-audio{margin:16px 0 0;background:var(--wave-purple) var(--purple);border:3px solid var(--yellow);border-radius:18px;padding:14px 16px}
+.evidence-audio .eyebrow{margin:0 0 8px}.evidence-audio audio{display:block;width:100%}
+.insight-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.insight-item{display:grid;gap:4px;width:100%;text-align:left;background:#ffffff0f;color:var(--white);border:2px solid transparent;border-left:6px solid var(--yellow);border-radius:16px;padding:14px 18px;transition:background .2s,border-color .2s}
+.insight-item:hover{background:#ffffff1f;border-color:var(--yellow)}
+.insight-item .eyebrow{font-size:.72rem}.insight-item strong{font-size:1.1rem}.insight-summary{color:#f3eaff}
+.insight-empty{color:#f3eaff;padding:14px 18px;border:2px dashed #ffffff40;border-radius:16px}
+/* Cartões de suspeito cadastrados pela equipe: o cartão inteiro é um botão que abre a edição. */
+.suspect-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:100%;text-align:left;font:inherit;cursor:pointer;transition:transform .2s,box-shadow .2s}
+button.suspect-card:hover{transform:translateY(-3px);box-shadow:0 0 0 4px var(--ink),0 18px 40px #2a0a5e55}
+.suspect-card.editing{cursor:default}
+.suspect-name{color:var(--purple);font-weight:700;font-size:1.35rem;margin:.75rem 0 .25rem}
+.suspect-description{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.suspect-edit-hint{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--yellow);display:grid;place-items:center}
+.suspect-edit-hint svg{width:16px;height:16px}
+.panel-yellow .field input{border-color:var(--ink)}
+.panel-yellow .primary{background:var(--purple)!important;color:var(--white)!important;border-color:var(--purple)!important}
+/* Abas principais como barra fixa no rodapé, rolável na horizontal quando não cabem. */
+.tab-bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--wave-dark) var(--ink);border-top:4px solid var(--yellow);box-shadow:0 -12px 30px #2a0a5e55;padding-bottom:env(safe-area-inset-bottom)}
+.tab-bar .nav-buttons{max-width:1250px;margin:auto;padding:12px 16px;justify-content:flex-start;justify-content:safe center}
+body.app-shell{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+/* Zoom da cena principal: botão de ampliar sobre a imagem; ampliada, a cena ocupa a área entre cabeçalho e abas. */
+.scene-viewport{position:relative}
+.scene-zoom-btn{display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;border-radius:50%;border:3px solid var(--yellow);background:var(--ink);color:var(--yellow);box-shadow:0 0 0 4px #16161666;transition:transform .2s,background .2s,color .2s}
+.scene-zoom-btn:hover{transform:scale(1.08);background:var(--yellow);color:var(--ink)}
+.scene-zoom-btn svg{width:20px;height:20px}
+.scene-zoom-in{position:absolute;top:14px;right:14px;z-index:2}
+.scene-zoom-bar{display:flex;align-items:center;gap:14px;padding:10px 16px;background:var(--wave-dark) var(--ink);border-bottom:4px solid var(--yellow)}
+.scene-pan{flex:1;min-width:0;height:44px;accent-color:var(--yellow);cursor:pointer}
+.scene-pan:disabled{opacity:.4;cursor:default}
+#scene.scene-zoomed{position:fixed;left:0;right:0;z-index:25;display:flex;flex-direction:column;background:var(--ink)}
+#scene.scene-zoomed>p,#scene.scene-zoomed>h2,#scene.scene-zoomed .scene-zoom-in{display:none}
+#scene.scene-zoomed .scene-viewport{flex:1;min-height:0;margin:0;display:flex;justify-content:flex-start;justify-content:safe center;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+#scene.scene-zoomed .scene-viewport::-webkit-scrollbar{display:none}
+#scene.scene-zoomed .scene-frame{flex-shrink:0;height:100%;width:max-content;max-width:none;margin:0;border:0;border-radius:0}
+#scene.scene-zoomed .scene-frame img{height:100%;width:auto;max-width:none}
+body.scene-zoom-open{overflow:hidden}
+/* As lupas da cena principal só aparecem com a cena ampliada. */
+#scene:not(.scene-zoomed) #scene-frame .marker{display:none}
+/* Cena ampliada: controle de rolagem na base da cena, logo acima da barra de abas. */
+#scene.scene-zoomed .scene-zoom-bar{order:2;border-bottom:0;border-top:4px solid var(--yellow)}
+/* Anotações: um único campo livre, alto o bastante para o registro da equipe. */
+.field textarea.notes-field{min-height:min(55vh,420px)}
+/* Arrastar para rolar: cursor de "mão" onde há conteúdo a rolar; nada é selecionado durante o arrasto. */
+#scene.scene-zoomed .scene-viewport.pan-scroll,.tab-bar .nav-buttons.pan-scroll{cursor:grab}
+.pan-scroll.is-panning,.pan-scroll.is-panning *{cursor:grabbing!important;user-select:none}
