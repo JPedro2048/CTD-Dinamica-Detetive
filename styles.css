@@ -163,3 +163,11 @@ button.timeline-item:hover{transform:translateY(-2px);box-shadow:0 0 0 4px var(-
 .book-credit-name{margin:2px 0 4px!important;line-height:1.15}
 .book-credit-name cite{font-style:normal}
 .book-credit-body{line-height:1.4}
+/* Tela inicial: no celular a ordem é texto → créditos → botão; no computador o botão volta para baixo do texto,
+   na coluna da esquerda, e os créditos ocupam a coluna da direita. */
+@media(min-width:1024px){
+  .opening-grid{grid-template-rows:auto auto;row-gap:20px}
+  .opening-text{grid-column:1;grid-row:1;align-self:end}
+  .opening-actions{grid-column:1;grid-row:2;align-self:start}
+  .opening-grid .book-credit{grid-column:2;grid-row:1 / span 2;align-self:center}
+}

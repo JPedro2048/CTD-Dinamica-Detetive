@@ -36,17 +36,14 @@
   <main class="main-inner">
    <p id="status" role="status" aria-live="polite"></p>
    <section id="opening" class="screen">
-    <div class="grid lg:grid-cols-2 gap-7 items-center py-8">
-     <div>
+    <div class="opening-grid grid lg:grid-cols-2 gap-7 items-center py-8">
+     <div class="opening-text">
       <p data-template-id="opening-eyebrow" class="canva-text eyebrow" style="color: rgb(239, 221, 43); font-weight: 400; font-style: normal; font-size: 16px;">UM CASO · QUATRO VERSÕES</p>
       <h1 data-template-id="opening-title" class="canva-text" style="color: rgb(239, 221, 43); font-weight: 800; font-style: normal; font-size: 46px;">Academia de Investigação</h1>
       <h2 data-template-id="opening-subtitle" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 28px;">O Caso do Quarto 307</h2>
       <p data-template-id="opening-motto" class="canva-text font-semibold" style="color: rgb(239, 221, 43); font-weight: 700; font-style: normal; font-size: 16px;">Observe os detalhes. Questione as aparências. Reconstrua os fatos.</p>
       <p data-template-id="opening-intro" class="canva-text muted leading-relaxed" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">Um crime aconteceu no quarto 307 de um hotel. Examinem a cena, reúnam as pistas e conversem em equipe para descobrir o que aconteceu.</p>
       <p data-template-id="opening-role" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Toquem em “Iniciar investigação” para começar. O que a equipe encontrar e anotar fica salvo enquanto esta aba do navegador estiver aberta.</p>
-      <div class="flex flex-wrap gap-3 mt-5">
-       <button id="start" data-template-id="start-button" class="canva-button ui-btn primary" type="button" style="background: rgb(239, 221, 43); color: rgb(22, 22, 22); font-weight: 700; font-style: normal; font-size: 16px;">INICIAR INVESTIGAÇÃO</button><button id="download-offline-opening" data-template-id="download-offline-button" class="canva-button ui-btn" type="button" hidden="" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">BAIXAR PROJETO OFFLINE</button>
-      </div>
      </div>
      <aside class="book-credit" aria-labelledby="book-credit-title">
       <img class="book-credit-cover" src="Capa_Crimes_Ilustrados.webp" width="720" height="720" alt="Capa do livro Crimes Ilustrados, de Modesto García, com ilustrações de Javi de Castro">
@@ -56,6 +53,9 @@
        <p data-template-id="book-credit-body" class="canva-text book-credit-body" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 15px;">De Modesto García, com ilustrações de Javi de Castro (Editora Record). As imagens e o mistério deste jogo vêm desse livro.</p>
       </div>
      </aside>
+     <div class="opening-actions flex flex-wrap gap-3">
+      <button id="start" data-template-id="start-button" class="canva-button ui-btn primary" type="button" style="background: rgb(239, 221, 43); color: rgb(22, 22, 22); font-weight: 700; font-style: normal; font-size: 16px;">INICIAR INVESTIGAÇÃO</button><button id="download-offline-opening" data-template-id="download-offline-button" class="canva-button ui-btn" type="button" hidden="" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">BAIXAR PROJETO OFFLINE</button>
+     </div>
     </div>
    </section>
    <section id="scene" class="screen" hidden="">
