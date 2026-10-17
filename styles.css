@@ -130,3 +130,29 @@ body.scene-zoom-open{overflow:hidden}
 .perception-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .perception-thumb svg{width:26px;height:26px}
 @media(max-width:400px){.perception-thumb{width:52px;height:52px}}
+/* Linha do tempo: acontecimentos numerados, ligados por uma linha amarela vertical. */
+.timeline-panel>.muted{margin-top:0}
+.timeline-count{color:#f3eaff;font-weight:600}
+.timeline-list{list-style:none;padding:0;display:grid;gap:12px;position:relative}
+.timeline-list.has-items::before{content:"";position:absolute;left:70px;top:12px;bottom:12px;width:4px;border-radius:2px;background:var(--yellow)}
+.timeline-list li{position:relative}
+.timeline-item{position:relative;display:flex;align-items:center;gap:10px;width:100%;text-align:left;font:inherit;background:var(--wave-yellow) var(--yellow);color:var(--ink);border-radius:18px;padding:12px 60px 12px 16px;box-shadow:0 12px 28px #2a0a5e44;cursor:pointer;transition:transform .2s,box-shadow .2s}
+button.timeline-item:hover{transform:translateY(-2px);box-shadow:0 0 0 4px var(--ink),0 12px 28px #2a0a5e55}
+.timeline-item.editing{flex-wrap:wrap;cursor:default;padding-right:16px}
+.timeline-item.editing .field{flex:1 1 200px;margin:0}
+.timeline-item.editing .field input{border-color:var(--ink)}
+.timeline-actions{flex-basis:100%}
+.timeline-number{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:var(--purple);color:var(--white);border:3px solid var(--ink);display:grid;place-items:center;font-weight:800;font-size:1.1rem}
+.timeline-name{font-weight:700;font-size:1.1rem;overflow-wrap:anywhere}
+.timeline-edit-hint{top:50%;transform:translateY(-50%)}
+.timeline-item .primary{background:var(--purple)!important;color:var(--white)!important;border-color:var(--purple)!important}
+.timeline-item .ui-btn{border-color:var(--ink)}
+.timeline-item .ui-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+/* Arrastar para reordenar a linha do tempo. */
+.timeline-handle{flex:0 0 auto;display:grid;place-items:center;width:30px;height:44px;margin-left:-6px;border-radius:10px;color:#16161699;cursor:grab;touch-action:none}
+.timeline-handle:hover{background:#16161614;color:var(--ink)}
+.timeline-handle svg{width:22px;height:22px}
+.timeline-list li{transition:transform .15s ease}
+.timeline-list li.dragging{transition:none;z-index:5}
+.timeline-list li.dragging .timeline-item{box-shadow:0 0 0 4px var(--ink),0 18px 36px #2a0a5e88;cursor:grabbing}
+.timeline-list.is-sorting,.timeline-list.is-sorting *{user-select:none;cursor:grabbing!important}

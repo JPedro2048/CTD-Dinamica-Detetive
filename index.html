@@ -86,9 +86,9 @@
    <section id="notebook" class="screen" hidden="">
     <p data-template-id="notebook-eyebrow" class="canva-text eyebrow" style="color: rgb(239, 221, 43); font-weight: 400; font-style: normal; font-size: 16px;">REGISTRO DA EQUIPE</p>
     <h2 data-template-id="notebook-title" class="canva-text" style="color: rgb(239, 221, 43); font-weight: 700; font-style: normal; font-size: 34px;">Caderno de investigação</h2>
-    <p data-template-id="notebook-help" class="canva-text muted" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">Em Percepções ficam as pistas já examinadas. Em Suspeitos, a equipe registra quem considera suspeito. Em Anotações, escreve livremente. Tudo é salvo automaticamente.</p>
+    <p data-template-id="notebook-help" class="canva-text muted" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">Em Percepções ficam as pistas já examinadas. Em Suspeitos e na Linha do tempo, a equipe organiza o caso. Em Anotações, escreve livremente. Tudo é salvo automaticamente.</p>
     <div class="tab-row" role="tablist" aria-label="Seções do caderno">
-     <button data-template-id="tab-perceptions" id="tab-perceptions" type="button" role="tab" class="canva-tabs ui-btn" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">PERCEPÇÕES</button> <button data-template-id="tab-suspects" id="tab-suspects" type="button" role="tab" class="canva-tabs ui-btn" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">SUSPEITOS</button> <button data-template-id="tab-notes" id="tab-notes" type="button" role="tab" class="canva-tabs ui-btn" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">ANOTAÇÕES</button>
+     <button data-template-id="tab-perceptions" id="tab-perceptions" type="button" role="tab" class="canva-tabs ui-btn" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">PERCEPÇÕES</button> <button data-template-id="tab-suspects" id="tab-suspects" type="button" role="tab" class="canva-tabs ui-btn" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">SUSPEITOS</button> <button data-template-id="tab-timeline" id="tab-timeline" type="button" role="tab" class="canva-tabs ui-btn" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">LINHA DO TEMPO</button> <button data-template-id="tab-notes" id="tab-notes" type="button" role="tab" class="canva-tabs ui-btn" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">ANOTAÇÕES</button>
     </div>
     <div id="perceptions-panel" class="panel" role="tabpanel" aria-labelledby="tab-perceptions" hidden="">
      <p data-template-id="perceptions-help" class="canva-text muted" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">As pistas aparecem aqui à medida que são examinadas. Toquem em uma para vê-la de novo.</p>
@@ -104,6 +104,16 @@
       </div><button data-template-id="add-suspect-button" type="submit" class="canva-button ui-btn primary" style="background: rgb(239, 221, 43); color: rgb(22, 22, 22); font-weight: 700; font-style: normal; font-size: 16px;">ADICIONAR SUSPEITO</button>
      </form>
      <div id="suspect-list" class="suspect-grid mt-5" aria-live="polite"></div>
+    </div>
+    <div id="timeline-panel" class="timeline-panel" role="tabpanel" aria-labelledby="tab-timeline" hidden="">
+     <p data-template-id="timeline-help" class="canva-text muted" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">A verdade aparece quando cada insight da equipe encontra o seu lugar na história. Usem os insights tirados das pistas para registrar até 10 acontecimentos, do primeiro ao último, e reorganizem a sequência sempre que um novo insight mudar o que vocês sabem. Arrastem um acontecimento pela alça ⋮⋮ para mudar a ordem, ou toquem nele para editá-lo.</p>
+     <form id="timeline-form" class="panel mt-5" novalidate>
+      <div class="field"><label data-template-id="timeline-name-label" class="canva-text" for="timeline_name" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Nome do acontecimento</label><input id="timeline_name" maxlength="60" autocomplete="off">
+      </div>
+      <div class="flex flex-wrap items-center gap-3"><button id="timeline-add" data-template-id="add-timeline-button" type="submit" class="canva-button ui-btn primary" style="background: rgb(239, 221, 43); color: rgb(22, 22, 22); font-weight: 700; font-style: normal; font-size: 16px;">ADICIONAR À LINHA DO TEMPO</button><span id="timeline-count" class="timeline-count" aria-live="polite"></span>
+      </div>
+     </form>
+     <ol id="timeline-list" class="timeline-list mt-5"></ol>
     </div>
     <div id="notes-panel" class="panel" role="tabpanel" aria-labelledby="tab-notes" hidden="">
      <div class="field"><label data-template-id="notes-label" class="canva-text" for="team_notes" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Anotações da equipe</label><textarea id="team_notes" class="notes-field" data-field="notes"></textarea>

@@ -33,10 +33,10 @@
   const normalizeName = value => String(value || "").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
   const isOfficialCulprit = name => /\b(laura|mendes)\b/.test(normalizeName(name));
   /* Veredito e revelação da solução estão desligados: o fechamento do caso acontece em sala, com a turma.
-     Mudar para true reativa a seção "Preparar veredito", o envelope e as seções 4–5 do relatório. */
+     Mudar para true reativa a seção "Preparar veredito", o envelope e as seções 5–6 do relatório. */
   const verdictEnabled = false;
   const sessionKey = "academia-307-team-v3";
-  const fresh = () => ({started:false,found:[],fields:{},investigators:[],suspects:[],selected:"",verdictFields:{},verdict:null,extras:0,pdfGenerated:false,envelopeOpened:false});
+  const fresh = () => ({started:false,found:[],fields:{},investigators:[],suspects:[],timeline:[],selected:"",verdictFields:{},verdict:null,extras:0,pdfGenerated:false,envelopeOpened:false});
   let state;
   try { state = JSON.parse(sessionStorage.getItem(sessionKey) || "null"); } catch {}
   if (!state || typeof state !== "object") state = fresh();
@@ -44,6 +44,7 @@
   if (!Array.isArray(state.found)) state.found = [];
   if (!Array.isArray(state.investigators)) state.investigators = [];
   if (!Array.isArray(state.suspects)) state.suspects = [];
+  if (!Array.isArray(state.timeline)) state.timeline = [];
   for (const k of ["fields","verdictFields"]) if (!state[k] || typeof state[k] !== "object") state[k] = {};
   let pdfBlob = null, pdfFilename = "", lastFocus = null, sheetReady = false, backendRecords = [], firstRead = false;
   const save = () => { try { sessionStorage.setItem(sessionKey,JSON.stringify(state)); } catch { notify("Não foi possível guardar as alterações nesta sessão."); } };
@@ -425,13 +426,14 @@
     if (window.lucide) lucide.createIcons();
   }
   function setTab(id) {
-    for (const tab of ["perceptions","suspects","notes"]) {
+    for (const tab of ["perceptions","suspects","timeline","notes"]) {
       $(`#${tab}-panel`).hidden = tab !== id;
       $(`#tab-${tab}`).setAttribute("aria-selected",String(tab === id));
       $(`#tab-${tab}`).classList.toggle("primary",tab === id);
     }
   }
   $("#tab-suspects").onclick = () => setTab("suspects");
+  $("#tab-timeline").onclick = () => setTab("timeline");
   $("#tab-notes").onclick = () => setTab("notes");
   $("#tab-perceptions").onclick = () => setTab("perceptions");
   setTab("perceptions");
@@ -511,6 +513,143 @@
     notify(`Suspeito adicionado: ${name}.`);$("#suspect_name").focus();
   });
   renderSuspects();
+
+  /* Linha do tempo: até 10 acontecimentos (só o nome), na ordem que a equipe montar. */
+  const timelineLimit = 10;
+  let editingEvent = null;
+  function timelineNumber(index) {
+    const number = document.createElement("span");number.className = "timeline-number";number.setAttribute("aria-hidden","true");
+    number.textContent = String(index + 1);
+    return number;
+  }
+  function timelineCard(item,index) {
+    const card = document.createElement("button");
+    card.type = "button";card.className = "timeline-item";card.dataset.eventId = item.id;
+    card.setAttribute("aria-label",`Editar acontecimento ${index + 1}: ${item.name}`);
+    const name = document.createElement("span");name.className = "timeline-name";name.textContent = item.name;
+    const hint = document.createElement("span");hint.className = "suspect-edit-hint timeline-edit-hint";hint.setAttribute("aria-hidden","true");hint.innerHTML = '<i data-lucide="pencil"></i>';
+    const handle = document.createElement("span");handle.className = "timeline-handle";handle.setAttribute("aria-hidden","true");
+    handle.title = "Arraste para mudar a ordem";handle.innerHTML = '<i data-lucide="grip-vertical"></i>';
+    card.append(handle,timelineNumber(index),name,hint);
+    card.addEventListener("click",() => {editingEvent = item.id;renderTimeline();$(`#edit-event-${item.id}`)?.focus();});
+    return card;
+  }
+  function timelineEditor(item,index) {
+    const form = document.createElement("form");form.className = "timeline-item editing";form.noValidate = true;
+    const field = suspectField("Nome do acontecimento",`edit-event-${item.id}`,item.name,false);
+    const input = field.querySelector("input");
+    const keepName = () => {const name = input.value.trim();if (name) item.name = name;};
+    const move = delta => {
+      const from = state.timeline.findIndex(entry => entry.id === item.id), to = from + delta;
+      if (to < 0 || to >= state.timeline.length) return;
+      keepName();
+      [state.timeline[from],state.timeline[to]] = [state.timeline[to],state.timeline[from]];
+      save();renderTimeline();$(`#edit-event-${item.id}`)?.focus();
+    };
+    const actions = document.createElement("div");actions.className = "flex flex-wrap gap-2 timeline-actions";
+    const saveButton = document.createElement("button");saveButton.type = "submit";saveButton.className = "ui-btn primary";saveButton.textContent = "SALVAR";
+    const up = actionButton("↑ SUBIR",() => move(-1));up.disabled = index === 0;up.setAttribute("aria-label","Mover para antes");
+    const down = actionButton("↓ DESCER",() => move(1));down.disabled = index === state.timeline.length - 1;down.setAttribute("aria-label","Mover para depois");
+    const cancel = actionButton("CANCELAR",() => {editingEvent = null;renderTimeline();focusEvent(item.id);});
+    const remove = actionButton("REMOVER",() => {
+      state.timeline = state.timeline.filter(entry => entry.id !== item.id);
+      editingEvent = null;save();renderTimeline();
+      notify(`Acontecimento removido: ${item.name}.`);$("#timeline_name").focus();
+    },"ui-btn danger");
+    actions.append(saveButton,up,down,cancel,remove);
+    form.append(timelineNumber(index),field,actions);
+    form.addEventListener("submit",event => {
+      event.preventDefault();
+      const name = input.value.trim();
+      if (!name) {notify("Informe o nome do acontecimento.");input.focus();return;}
+      item.name = name;editingEvent = null;save();renderTimeline();focusEvent(item.id);
+    });
+    return form;
+  }
+  function focusEvent(id) {
+    document.querySelector(`.timeline-item[data-event-id="${id}"]`)?.focus();
+  }
+  function renderTimeline() {
+    const list = $("#timeline-list"), count = state.timeline.length, full = count >= timelineLimit;
+    if (!count) {
+      const empty = document.createElement("li");empty.className = "perception-empty";
+      empty.textContent = "Nenhum acontecimento ainda. Adicionem o primeiro acima.";
+      list.replaceChildren(empty);
+    } else {
+      list.replaceChildren(...state.timeline.map((item,index) => {
+        const li = document.createElement("li");
+        li.append(item.id === editingEvent ? timelineEditor(item,index) : timelineCard(item,index));
+        return li;
+      }));
+    }
+    list.classList.toggle("has-items",count > 0);
+    $("#timeline_name").disabled = full;$("#timeline-add").disabled = full;
+    $("#timeline-count").textContent = full ? `Limite atingido: ${timelineLimit} de ${timelineLimit} acontecimentos.` : `${count} de ${timelineLimit} acontecimentos.`;
+    if (window.lucide) lucide.createIcons();
+  }
+  $("#timeline-form").addEventListener("submit",event => {
+    event.preventDefault();
+    if (state.timeline.length >= timelineLimit) {notify(`A linha do tempo aceita até ${timelineLimit} acontecimentos.`);return;}
+    const name = $("#timeline_name").value.trim();
+    if (!name) {notify("Informe o nome do acontecimento.");$("#timeline_name").focus();return;}
+    state.timeline.push({id:`t${Date.now().toString(36)}${Math.random().toString(36).slice(2,6)}`,name});save();
+    event.currentTarget.reset();renderTimeline();
+    notify(`Acontecimento adicionado: ${name}.`);
+    if (state.timeline.length < timelineLimit) $("#timeline_name").focus();
+  });
+  renderTimeline();
+
+  /* Arrastar pela alça (⋮⋮) para reordenar. Funciona com mouse e toque; os outros cartões abrem espaço
+     enquanto o cartão é arrastado, e a página rola sozinha perto das bordas. Subir/Descer seguem no editor. */
+  (function enableTimelineDrag(list) {
+    let drag = null, swallowClick = false;
+    list.addEventListener("pointerdown",event => {
+      const handle = event.target.closest(".timeline-handle");
+      if (!handle || event.button > 0) {swallowClick = false;return;}
+      event.preventDefault();
+      const li = handle.closest("li"), items = [...list.children];
+      const rects = items.map(el => el.getBoundingClientRect());
+      drag = {li,items,from:items.indexOf(li),to:items.indexOf(li),startY:event.clientY,startScroll:window.scrollY,
+        step:rects.length > 1 ? rects[1].top - rects[0].top : rects[0].height,id:event.pointerId,moved:false};
+      swallowClick = true;
+      handle.setPointerCapture(event.pointerId);
+      li.classList.add("dragging");list.classList.add("is-sorting");
+    });
+    list.addEventListener("pointermove",event => {
+      if (!drag || event.pointerId !== drag.id) return;
+      if (event.clientY < 110) window.scrollBy(0,-10);
+      else if (event.clientY > window.innerHeight - 130) window.scrollBy(0,10);
+      const dy = event.clientY - drag.startY + (window.scrollY - drag.startScroll);
+      if (Math.abs(dy) > 4) drag.moved = true;
+      drag.li.style.transform = `translateY(${dy}px)`;
+      drag.to = Math.max(0,Math.min(drag.items.length - 1,drag.from + Math.round(dy / drag.step)));
+      drag.items.forEach((el,i) => {
+        if (el === drag.li) return;
+        const shift = drag.from < drag.to && i > drag.from && i <= drag.to ? -drag.step
+          : drag.from > drag.to && i < drag.from && i >= drag.to ? drag.step : 0;
+        el.style.transform = shift ? `translateY(${shift}px)` : "";
+      });
+    });
+    const finish = event => {
+      if (!drag || event.pointerId !== drag.id) return;
+      const {from,to,moved,items,li} = drag;
+      items.forEach(el => {el.style.transform = "";});
+      li.classList.remove("dragging");list.classList.remove("is-sorting");
+      drag = null;
+      if (!moved || from === to) return;
+      const [item] = state.timeline.splice(from,1);
+      state.timeline.splice(to,0,item);
+      editingEvent = null;save();renderTimeline();
+      notify(`"${item.name}" agora é o acontecimento ${to + 1}.`);focusEvent(item.id);
+    };
+    list.addEventListener("pointerup",finish);
+    list.addEventListener("pointercancel",finish);
+    /* Tocar ou arrastar a alça não abre o editor do cartão. */
+    list.addEventListener("click",event => {
+      if (!swallowClick) return;
+      swallowClick = false;event.preventDefault();event.stopPropagation();
+    },true);
+  })($("#timeline-list"));
   function renderVerdict() {
     const registered = !!state.verdict;
     $("#pre-verdict").hidden = registered;
@@ -591,8 +730,11 @@
       line(suspect.name,true,11);
       line(missing(suspect.description));
     });
+    heading("4. LINHA DO TEMPO");
+    if (!state.timeline.length) line("Nenhum acontecimento registrado.");
+    state.timeline.forEach((item,index) => line(`${index + 1}. ${item.name}`));
     if (verdictEnabled && v) {
-    heading("4. VEREDITO REGISTRADO");
+    heading("5. VEREDITO REGISTRADO");
     line(`Suspeito selecionado: ${v.selected}`);
     [
       ["Justificativa","verdict_justification"],
@@ -600,7 +742,7 @@
       ["Outra hipótese considerada","verdict_alt_hypothesis"],
       ["Evidência decisiva","verdict_decisive_evidence"]
     ].forEach(([label,key]) => line(`${label}: ${missing(v.answers[key])}`));
-    heading("5. RESULTADO E SOLUÇÃO OFICIAL");
+    heading("6. RESULTADO E SOLUÇÃO OFICIAL");
     line(`Status: ${isOfficialCulprit(v.selected) ? "A escolha coincide com a solução oficial." : "A escolha difere da solução oficial."}`);
     line(isOfficialCulprit(v.selected) ? correct : incorrect);
     line("Culpada na solução oficial: Laura Mendes.",true);
@@ -771,6 +913,7 @@
         state = fresh();pdfBlob = null;pdfFilename = "";
         document.querySelectorAll("[data-field],[data-verdict]").forEach(input => input.value = "");
         $("#suspect-form").reset();editingSuspect = null;renderSuspects();
+        $("#timeline-form").reset();editingEvent = null;renderTimeline();
         setTab("perceptions");updateProgress();closeModal(false);go("opening");sceneMemory = null;notify("Sessão reiniciada.");
       },"ui-btn danger"]
     ]);
