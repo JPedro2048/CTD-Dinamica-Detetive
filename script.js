@@ -2,7 +2,7 @@
   "use strict";
   const $ = s => document.querySelector(s);
   const evidence = [
-    {id:"E1",summary:"Armário com um blazer pendurado e uma mala de viagem; o crachá e a etiqueta podem ser examinados.",name:"Armário",origin:"Armário",x:17.5,y:11.1,image:"Pista_armario.png",imageAlt:"Interior do armário: blazer escuro pendurado com crachá na lapela e mala de viagem cinza com etiqueta de bagagem",hotspots:["E1.1","E1.2"],description:"No armário há um blazer escuro pendurado e uma mala de viagem cinza. Selecionem as lupas para examinar os detalhes."},
+    {id:"E1",summary:"Armário com um blazer pendurado e uma mala de viagem; o crachá e a etiqueta podem ser examinados.",name:"Armário",origin:"Armário",backLabel:"VOLTAR AO ARMÁRIO",x:17.5,y:11.1,image:"Pista_armario.png",imageAlt:"Interior do armário: blazer escuro pendurado com crachá na lapela e mala de viagem cinza com etiqueta de bagagem",hotspots:["E1.1","E1.2"],description:"No armário há um blazer escuro pendurado e uma mala de viagem cinza. Selecionem as lupas para examinar os detalhes."},
     {id:"E1.1",parent:"E1",summary:"Crachá na lapela do blazer: “Segurança · Vice-presidência · J. Rodríguez”.",name:"Crachá do blazer",origin:"Armário",x:15.6,y:38.8,image:"Detalhe_cracha.png",imageAlt:"Detalhe ampliado do crachá: “SEGURANÇA · VICE-PRESIDÊNCIA · J. Rodríguez”",imageRound:true,description:"Crachá preso à lapela do blazer escuro pendurado no armário:\n“SEGURANÇA · VICE-PRESIDÊNCIA · J. Rodríguez”."},
     {id:"E1.2",parent:"E1",summary:"Etiqueta de bagagem da mala, escrita à mão: “Av. de Juan Duque, 105 — Madrid”.",name:"Etiqueta da mala",origin:"Armário",x:53.2,y:77.6,image:"Detalhe_etiqueta.png",imageAlt:"Detalhe ampliado da etiqueta de bagagem: “Av. de Juan Duque, 105 — Madrid”",imageRound:true,description:"Etiqueta de bagagem presa à alça da mala de viagem cinza, escrita à mão:\n“Av. de Juan Duque, 105 — Madrid”."},
     {id:"E2",summary:"Pasta com transferências questionáveis do fundo da empresa e anotação rasgada: “se contar, todos saberão”.",name:"Mala",origin:"Mala",x:15,y:77,description:"Dentro da mala há uma pasta financeira com cópia de transferências questionáveis ligadas ao fundo da empresa e uma anotação parcialmente rasgada: “se contar, todos saberão”."},
@@ -10,6 +10,12 @@
     {id:"E4",summary:"Ligação da recepção: uma camareira ouviu voz de mulher no quarto por volta de 18h45, minutos antes do disparo.",name:"Telefone do quarto",origin:"Telefone",x:39.5,y:20,audio:"Telefone.mp4",audioLabel:"Gravação da ligação recebida pelo telefone do quarto",description:"Transcrição da ligação recebida:\n“Alô, inspetor. Estou ligando da recepção. Sei que estão investigando a morte do Sr. Rodríguez Tresler. Quero comentar que uma das moças da equipe de limpeza do hotel disse que uns minutos antes de escutar o tiro, por volta das quinze para as sete, ela acha que ouviu a voz de uma mulher no quarto. Infelizmente não conseguiu entender nada do que estavam falando, mas tem certeza de que havia alguém. Espero que esta informação seja de alguma utilidade na investigação. Muito obrigado”"},
     {id:"E5",summary:"Conversa íntima com “Laura” às 17h53–17h54, mencionando as crianças e a vice-presidenta.",name:"Celular da vítima",origin:"Celular",x:77.2,y:57.1,image:"Celular.png",imageAlt:"Tela do celular da vítima com a conversa com Laura e uma foto enviada por ela",description:"Conversa com “Laura”, às 17h53–17h54:\n“Dê um beijo neles por mim.”\n“Ok! Até quando precisa ficar com a vice-presidenta?”\n“Até domingo à noite.”\n“Estou com saudade! Um beijinho pra você”"},
     {id:"E6",summary:"E-mail em alemão enviado de jrt76@mymail.com encerrando uma relação e pedindo que o segredo não seja contado.",name:"Laptop",origin:"Laptop",x:49.9,y:40.6,image:"Computador.png",imageAlt:"Laptop aberto exibindo o e-mail em alemão enviado de jrt76@mymail.com",description:"Remetente: jrt76@mymail.com\nDestinatário: 543956@mailers.de\n\nDu bist der wunderbarste Mann, den es gibt, und diese Tage waren wundervoll, aber wie ich schon sagte, das muss ein Ende haben. Unsere können nicht sein. Und bitte, ich flehe dich wieder an, erzähle es nicht. Du würdest mein Leben ruinieren."},
+    {id:"E11",summary:"Vítima caída no carpete, entre a escrivaninha e a cama; a arma, a mancha de sangue e a garrafa quebrada podem ser examinadas.",name:"Corpo da vítima",origin:"Corpo",backLabel:"VOLTAR AO CORPO",x:21.1,y:79.4,image:"Cena_corpo.jpg",imageAlt:"Vista aproximada da vítima caída de costas no carpete, com uma arma junto à mão, sangue perto da cabeça e uma garrafa quebrada sobre uma mancha escura",hotspots:["E11.1","E11.2","E11.3"],description:"A vítima está caída de costas no carpete, entre a escrivaninha e a cama. Selecionem as lupas para examinar os detalhes."},
+    {id:"E11.1",parent:"E11",summary:"Pistola preta no carpete, encostada à mão da vítima.",name:"Arma junto à mão",origin:"Corpo",x:35.4,y:72,image:"Detalhe_arma.png",imageAlt:"Detalhe ampliado: pistola preta no carpete, encostada à mão da vítima",imageRound:true,description:"Pistola preta caída no carpete, encostada à mão da vítima."},
+    {id:"E11.2",parent:"E11",summary:"Mancha de sangue no carpete ao redor da cabeça da vítima, junto à cama.",name:"Mancha de sangue",origin:"Corpo",x:66.5,y:42,image:"Detalhe_sangue.png",imageAlt:"Detalhe ampliado: mancha de sangue no carpete ao redor da cabeça da vítima, junto à cama",imageRound:true,description:"Mancha de sangue no carpete ao redor da cabeça da vítima, junto à cama."},
+    {id:"E11.3",parent:"E11",summary:"Garrafa quebrada sobre uma mancha escura no carpete; o conteúdo da bebida ainda não foi identificado.",name:"Garrafa quebrada",origin:"Corpo",x:59.6,y:10.8,image:"Detalhe_garrafa.png",imageAlt:"Detalhe ampliado: cacos de uma garrafa quebrada sobre uma mancha escura de líquido no carpete",imageRound:true,description:"Garrafa de vidro quebrada no carpete, logo acima do corpo, com cacos espalhados sobre uma mancha escura de líquido derramado. O conteúdo da bebida ainda não pôde ser identificado."},
+    {id:"E12",summary:"Blusa lilás e calça jeans largadas sobre a cama; as roupas não pertencem à vítima.",name:"Roupas sobre a cama",origin:"Cama",x:40.5,y:78.6,image:"Roupas_cama.jpg",imageAlt:"Blusa lilás e calça jeans largadas sobre a colcha da cama",description:"Sobre a cama, há uma blusa lilás e uma calça jeans largadas sobre a colcha. As roupas não pertencem à vítima."},
+    {id:"E13",summary:"Telejornal argentino na TV, sobre a visita da presidenta da Espanha.",name:"Televisão",origin:"Televisão",x:7.5,y:24,image:"Televisao.jpg",imageAlt:"Televisão ligada em um telejornal com o logotipo do canal, a bandeira argentina e a faixa “Notícias locais”",description:"A televisão está ligada em um telejornal argentino. A reportagem, sob a faixa “Notícias locais”, trata da visita da própria presidenta da Espanha."},
     {id:"E7",summary:"Relógio parado às 18h52; disparo por volta de 18h55; chamada à recepção às 18h57; porta de serviço aberta às 18h58.",name:"Relógio e linha do tempo",origin:"Relógio",x:55,y:85,description:"Relógio de pulso quebrado: 18h52.\nDisparo ouvido: aproximadamente 18h55.\nChamada registrada pela recepção: 18h57.\nCâmera da porta de serviço: abertura às 18h58."},
     {id:"E8",summary:"Entradas de Rodríguez (18h21) e de Laura (18h31); porta de serviço aberta às 18h58 com cartão de manutenção.",name:"Porta e corredor",origin:"Porta",x:89,y:35,description:"Leitor: entrada de Rodríguez às 18h21; entrada de Laura às 18h31 com crachá temporário. Porta de serviço aberta às 18h58 com cartão de manutenção. Não há saída registrada pela porta principal."},
     {id:"E9",summary:"Janela trancada por dentro, com reflexo lilás de tecido e marca de pó de maquiagem no parapeito.",name:"Janela",origin:"Janela",x:70,y:25,description:"Janela fechada por dentro, sem marcas de passagem. No parapeito interno há um reflexo lilás de tecido e uma pequena marca de pó de maquiagem."},
@@ -81,8 +87,13 @@
     } catch { notify("Veredito registrado nesta sessão; não foi possível confirmar a cópia na Canva Sheet."); }
   }
 
-  /* Pistas com lupa na cena principal. Locais com cena interna (o armário) valem pelas pistas que guardam. */
-  const sceneClueIds = ["E1","E3","E4","E5","E6"];
+  /* Pistas com lupa na cena principal. Locais com cena interna (armário, corpo) valem pelas pistas que guardam. */
+  const sceneClueIds = ["E1","E3","E4","E5","E6","E11","E12","E13"];
+  /* Um local com cena interna (armário, corpo) só fica dourado quando todas as pistas dentro dele foram examinadas. */
+  function isExamined(id) {
+    const e = evidence.find(item => item.id === id);
+    return e?.hotspots ? e.hotspots.every(sub => state.found.includes(sub)) : state.found.includes(id);
+  }
   function collectibleEvidence() {
     return sceneClueIds.flatMap(id => evidence.find(e => e.id === id)?.hotspots || [id]);
   }
@@ -96,7 +107,7 @@
     renderExpertHelp(count,collectible.length);
     renderInsights();
     document.querySelectorAll("[data-marker]").forEach(button => {
-      const visited = state.found.includes(button.dataset.marker);
+      const visited = isExamined(button.dataset.marker);
       button.classList.toggle("done",visited);
       button.setAttribute("aria-pressed",String(visited));
       const e = evidence.find(item => item.id === button.dataset.marker);
@@ -252,7 +263,7 @@
       body.append(list,more);renderExtras();
     }
     const back = e.parent
-      ? ["VOLTAR AO ARMÁRIO",() => openEvidence(e.parent),"ui-btn primary"]
+      ? [evidence.find(item => item.id === e.parent)?.backLabel || "VOLTAR",() => openEvidence(e.parent),"ui-btn primary"]
       : ["VOLTAR À CENA",closeModal,"ui-btn primary"];
     openModal(e.name,`${e.id} · ${e.origin}`,body,[
       back,
@@ -264,7 +275,7 @@
   }
   function createMarker(e) {
     const button = document.createElement("button");
-    const visited = state.found.includes(e.id);
+    const visited = isExamined(e.id);
     button.type = "button";button.className = visited ? "marker done" : "marker";button.dataset.marker = e.id;
     button.style.left = `${e.x}%`;button.style.top = `${e.y}%`;
     button.setAttribute("aria-pressed",String(visited));
