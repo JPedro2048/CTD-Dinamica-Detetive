@@ -10,12 +10,12 @@
     {id:"E4",summary:"Ligação da recepção: uma camareira ouviu voz de mulher no quarto por volta de 18h45, minutos antes do disparo.",name:"Telefone do quarto",origin:"Telefone",x:39.5,y:20,audio:"Telefone.mp4",audioLabel:"Gravação da ligação recebida pelo telefone do quarto",description:"Transcrição da ligação recebida:\n“Alô, inspetor. Estou ligando da recepção. Sei que estão investigando a morte do Sr. Rodríguez Tresler. Quero comentar que uma das moças da equipe de limpeza do hotel disse que uns minutos antes de escutar o tiro, por volta das quinze para as sete, ela acha que ouviu a voz de uma mulher no quarto. Infelizmente não conseguiu entender nada do que estavam falando, mas tem certeza de que havia alguém. Espero que esta informação seja de alguma utilidade na investigação. Muito obrigado”"},
     {id:"E5",summary:"Conversa íntima com “Laura” às 17h53–17h54, mencionando as crianças e a vice-presidenta.",name:"Celular da vítima",origin:"Celular",x:77.2,y:57.1,image:"Celular.png",imageAlt:"Tela do celular da vítima com a conversa com Laura e uma foto enviada por ela",description:"Conversa com “Laura”, às 17h53–17h54:\n“Dê um beijo neles por mim.”\n“Ok! Até quando precisa ficar com a vice-presidenta?”\n“Até domingo à noite.”\n“Estou com saudade! Um beijinho pra você”"},
     {id:"E6",summary:"E-mail em alemão enviado de jrt76@mymail.com encerrando uma relação e pedindo que o segredo não seja contado.",name:"Laptop",origin:"Laptop",x:49.9,y:40.6,image:"Computador.png",imageAlt:"Laptop aberto exibindo o e-mail em alemão enviado de jrt76@mymail.com",description:"Remetente: jrt76@mymail.com\nDestinatário: 543956@mailers.de\n\nDu bist der wunderbarste Mann, den es gibt, und diese Tage waren wundervoll, aber wie ich schon sagte, das muss ein Ende haben. Unsere können nicht sein. Und bitte, ich flehe dich wieder an, erzähle es nicht. Du würdest mein Leben ruinieren."},
-    {id:"E11",summary:"Vítima caída no carpete, entre a escrivaninha e a cama; a arma, a mancha de sangue e a garrafa quebrada podem ser examinadas.",name:"Corpo da vítima",origin:"Corpo",backLabel:"VOLTAR AO CORPO",x:21.1,y:79.4,image:"Cena_corpo.jpg",imageAlt:"Vista aproximada da vítima caída de costas no carpete, com uma arma junto à mão, sangue perto da cabeça e uma garrafa quebrada sobre uma mancha escura",hotspots:["E11.1","E11.2","E11.3"],description:"A vítima está caída de costas no carpete, entre a escrivaninha e a cama. Selecionem as lupas para examinar os detalhes."},
+    {id:"E11",summary:"Vítima caída no carpete, entre a escrivaninha e a cama; a arma, a mancha de sangue e a garrafa quebrada podem ser examinadas.",name:"Corpo da vítima",origin:"Corpo",label:"EXAMINE O CORPO",labelDx:-1.5,labelDy:4.6,backLabel:"VOLTAR AO CORPO",x:21.1,y:79.4,image:"Cena_corpo.jpg",imageAlt:"Vista aproximada da vítima caída de costas no carpete, com uma arma junto à mão, sangue perto da cabeça e uma garrafa quebrada sobre uma mancha escura",hotspots:["E11.1","E11.2","E11.3"],description:"A vítima está caída de costas no carpete, entre a escrivaninha e a cama. Selecionem as lupas para examinar os detalhes."},
     {id:"E11.1",parent:"E11",summary:"Pistola preta no carpete, encostada à mão da vítima.",name:"Arma junto à mão",origin:"Corpo",x:35.4,y:72,image:"Detalhe_arma.png",imageAlt:"Detalhe ampliado: pistola preta no carpete, encostada à mão da vítima",imageRound:true,description:"Pistola preta caída no carpete, encostada à mão da vítima."},
     {id:"E11.2",parent:"E11",summary:"Mancha de sangue no carpete ao redor da cabeça da vítima, junto à cama.",name:"Mancha de sangue",origin:"Corpo",x:66.5,y:42,image:"Detalhe_sangue.png",imageAlt:"Detalhe ampliado: mancha de sangue no carpete ao redor da cabeça da vítima, junto à cama",imageRound:true,description:"Mancha de sangue no carpete ao redor da cabeça da vítima, junto à cama."},
     {id:"E11.3",parent:"E11",summary:"Garrafa quebrada sobre uma mancha escura no carpete; o conteúdo da bebida ainda não foi identificado.",name:"Garrafa quebrada",origin:"Corpo",x:59.6,y:10.8,image:"Detalhe_garrafa.png",imageAlt:"Detalhe ampliado: cacos de uma garrafa quebrada sobre uma mancha escura de líquido no carpete",imageRound:true,description:"Garrafa de vidro quebrada no carpete, logo acima do corpo, com cacos espalhados sobre uma mancha escura de líquido derramado. O conteúdo da bebida ainda não pôde ser identificado."},
-    {id:"E12",summary:"Blusa lilás e calça jeans largadas sobre a cama; as roupas não pertencem à vítima.",name:"Roupas sobre a cama",origin:"Cama",x:40.5,y:78.6,image:"Roupas_cama.jpg",imageAlt:"Blusa lilás e calça jeans largadas sobre a colcha da cama",description:"Sobre a cama, há uma blusa lilás e uma calça jeans largadas sobre a colcha. As roupas não pertencem à vítima."},
-    {id:"E13",summary:"Telejornal argentino na TV, sobre a visita da presidenta da Espanha.",name:"Televisão",origin:"Televisão",x:7.5,y:24,image:"Televisao.jpg",imageAlt:"Televisão ligada em um telejornal com o logotipo do canal, a bandeira argentina e a faixa “Notícias locais”",description:"A televisão está ligada em um telejornal argentino. A reportagem, sob a faixa “Notícias locais”, trata da visita da própria presidenta da Espanha."},
+    {id:"E12",summary:"Blusa lilás e calça jeans largadas sobre a cama; as roupas não pertencem à vítima.",name:"Roupas sobre a cama",origin:"Cama",label:"OLHE AS ROUPAS",x:40.5,y:78.6,image:"Roupas_cama.jpg",imageAlt:"Blusa lilás e calça jeans largadas sobre a colcha da cama",description:"Sobre a cama, há uma blusa lilás e uma calça jeans largadas sobre a colcha. As roupas não pertencem à vítima."},
+    {id:"E13",summary:"Telejornal argentino na TV, sobre a visita da presidenta da Espanha.",name:"Televisão",origin:"Televisão",label:"VEJA A TELEVISÃO",x:7.5,y:24,image:"Televisao.jpg",imageAlt:"Televisão ligada em um telejornal com o logotipo do canal, a bandeira argentina e a faixa “Notícias locais”",description:"A televisão está ligada em um telejornal argentino. A reportagem, sob a faixa “Notícias locais”, trata da visita da presidenta da Espanha."},
     {id:"E7",summary:"Relógio parado às 18h52; disparo por volta de 18h55; chamada à recepção às 18h57; porta de serviço aberta às 18h58.",name:"Relógio e linha do tempo",origin:"Relógio",x:55,y:85,description:"Relógio de pulso quebrado: 18h52.\nDisparo ouvido: aproximadamente 18h55.\nChamada registrada pela recepção: 18h57.\nCâmera da porta de serviço: abertura às 18h58."},
     {id:"E8",summary:"Entradas de Rodríguez (18h21) e de Laura (18h31); porta de serviço aberta às 18h58 com cartão de manutenção.",name:"Porta e corredor",origin:"Porta",x:89,y:35,description:"Leitor: entrada de Rodríguez às 18h21; entrada de Laura às 18h31 com crachá temporário. Porta de serviço aberta às 18h58 com cartão de manutenção. Não há saída registrada pela porta principal."},
     {id:"E9",summary:"Janela trancada por dentro, com reflexo lilás de tecido e marca de pó de maquiagem no parapeito.",name:"Janela",origin:"Janela",x:70,y:25,description:"Janela fechada por dentro, sem marcas de passagem. No parapeito interno há um reflexo lilás de tecido e uma pequena marca de pó de maquiagem."},
@@ -105,7 +105,7 @@
     $("#progress").setAttribute("aria-valuenow",String(count));
     $("#progress-fill").style.width = `${count / collectible.length * 100}%`;
     renderExpertHelp(count,collectible.length);
-    renderInsights();
+    renderPerceptions();
     document.querySelectorAll("[data-marker]").forEach(button => {
       const visited = isExamined(button.dataset.marker);
       button.classList.toggle("done",visited);
@@ -157,12 +157,12 @@
     $("#expert-button").disabled = !unlocked;
     $("#expert-help").classList.toggle("unlocked",unlocked);
     $("#expert-status").textContent = unlocked
-      ? `Desbloqueado! As ${total} evidências foram examinadas.`
-      : `Bloqueado · examinem todas as evidências para pedir ajuda: ${count} de ${total}.`;
+      ? `Liberado! Todas as ${total} pistas foram examinadas.`
+      : `Bloqueado · examinem todas as pistas para liberar: ${count} de ${total}.`;
     $("#expert-progress").setAttribute("aria-valuemax",String(total));
     $("#expert-progress").setAttribute("aria-valuenow",String(count));
     $("#expert-progress-fill").style.width = `${count / total * 100}%`;
-    if (expertUnlocked === false && unlocked) notify("Ajuda de um especialista desbloqueada! Ela está abaixo da cena do crime.");
+    if (expertUnlocked === false && unlocked) notify("Ajuda de um especialista liberada! O botão fica abaixo da cena do crime.");
     expertUnlocked = unlocked;
   }
   function openExpertHelp() {
@@ -258,7 +258,7 @@
         more.hidden = state.extras >= extras.length;
       };
       const more = actionButton("REVELAR PRÓXIMA PISTA",() => {
-        state.extras = Math.min(extras.length,state.extras + 1);save();renderExtras();renderInsights();
+        state.extras = Math.min(extras.length,state.extras + 1);save();renderExtras();renderPerceptions();
       });
       body.append(list,more);renderExtras();
     }
@@ -284,7 +284,18 @@
     button.addEventListener("click",() => openEvidence(e.id));
     return button;
   }
-  evidence.filter(e => sceneClueIds.includes(e.id)).forEach(e => $("#scene-frame").append(createMarker(e)));
+  /* Pistas sem balão impresso na ilustração ganham um balão igual aos originais (cinza-escuro, texto branco),
+     com a lupa na ponta esquerda. labelDx/labelDy deslocam o balão, em % da cena, quando ele cobriria outra lupa. */
+  function createMarkerLabel(e) {
+    const label = document.createElement("span");
+    label.className = "marker-label";label.setAttribute("aria-hidden","true");label.textContent = e.label;
+    label.style.left = `${e.x + (e.labelDx ?? 1)}%`;label.style.top = `${e.y + (e.labelDy ?? 0)}%`;
+    return label;
+  }
+  evidence.filter(e => sceneClueIds.includes(e.id)).forEach(e => {
+    if (e.label) $("#scene-frame").append(createMarkerLabel(e));
+    $("#scene-frame").append(createMarker(e));
+  });
 
   /* Zoom da cena: a imagem ocupa toda a altura entre o cabeçalho e a barra de abas,
      e o controle no topo rola a cena na horizontal. */
@@ -293,6 +304,9 @@
   }
   /* Ampliada, a cena ocupa o espaço entre o cabeçalho e a barra de abas, que fica sempre no rodapé;
      o controle de rolagem fica na base da cena, logo acima das abas. */
+  function sizeSceneLabels() {
+    $("#scene-frame").style.setProperty("--scene-width",`${$("#scene-frame").offsetWidth}px`);
+  }
   function layoutSceneZoom() {
     $("#scene").style.top = `${$("#global-header").offsetHeight}px`;
     $("#scene").style.bottom = `${$("#tab-bar").offsetHeight}px`;
@@ -310,6 +324,7 @@
     const viewport = $("#scene-viewport");
     if (on) {
       layoutSceneZoom();
+      sizeSceneLabels();
       viewport.scrollLeft = (viewport.scrollWidth - viewport.clientWidth) / 2;
       syncScenePan();
       if (moveFocus) $("#scene-zoom-out").focus();
@@ -327,8 +342,8 @@
     viewport.scrollLeft = $("#scene-pan").value / 1000 * (viewport.scrollWidth - viewport.clientWidth);
   });
   $("#scene-viewport").addEventListener("scroll",() => {if (isSceneZoomed()) syncScenePan();},{passive:true});
-  $("#scene-frame img").addEventListener("load",() => {if (isSceneZoomed()) syncScenePan();});
-  window.addEventListener("resize",() => {if (isSceneZoomed()) {layoutSceneZoom();syncScenePan();}});
+  $("#scene-frame img").addEventListener("load",() => {if (isSceneZoomed()) {sizeSceneLabels();syncScenePan();}});
+  window.addEventListener("resize",() => {if (isSceneZoomed()) {layoutSceneZoom();sizeSceneLabels();syncScenePan();}});
 
   /* Arrastar para rolar com o mouse (no toque a rolagem já é nativa). O arrasto só começa após alguns pixels,
      e o clique que encerra um arrasto é descartado para não abrir pistas ou abas sem querer.
@@ -369,44 +384,57 @@
     input.value = state.verdictFields[input.dataset.verdict] || "";
     input.addEventListener("input",() => {state.verdictFields[input.dataset.verdict] = input.value;save();});
   });
-  /* Insights: registro automático das pistas examinadas, na ordem em que foram encontradas. */
-  function renderInsights() {
-    const list = $("#insight-list");
+  /* Percepções: registro automático das pistas examinadas, na ordem em que foram encontradas. */
+  function renderPerceptions() {
+    const list = $("#perception-list");
     const examined = state.found.map(id => evidence.find(e => e.id === id)).filter(Boolean);
     if (!examined.length) {
-      const empty = document.createElement("li");empty.className = "insight-empty";
-      empty.textContent = "Nenhum elemento examinado ainda. Usem as lupas na cena do crime.";
+      const empty = document.createElement("li");empty.className = "perception-empty";
+      empty.textContent = "Nenhuma pista examinada ainda. Ampliem a cena do crime e toquem nas lupas.";
       list.replaceChildren(empty);
       return;
     }
     list.replaceChildren(...examined.map(e => {
       const item = document.createElement("li");
-      const button = document.createElement("button");button.type = "button";button.className = "insight-item";
+      const button = document.createElement("button");button.type = "button";button.className = "perception-item";
       button.setAttribute("aria-label",`Rever pista ${e.id}: ${e.name}`);
       const code = document.createElement("span");code.className = "eyebrow";code.textContent = `${e.id} · ${e.origin}`;
       const name = document.createElement("strong");name.textContent = e.name;
-      const summary = document.createElement("span");summary.className = "insight-summary";summary.textContent = e.summary;
-      button.append(code,name,summary);
-      if (e.id === "E10" && state.extras) {
-        const extra = document.createElement("span");extra.className = "insight-summary";
-        extra.textContent = extras.slice(0,state.extras).join(". ") + ".";
-        button.append(extra);
+      const summary = document.createElement("span");summary.className = "perception-summary";summary.textContent = e.summary;
+      /* Miniatura da pista; sem imagem (a ligação), um ícone ocupa o mesmo espaço. */
+      const thumb = document.createElement("span");
+      thumb.className = e.imageRound ? "perception-thumb round" : "perception-thumb";thumb.setAttribute("aria-hidden","true");
+      if (e.image) {
+        const img = document.createElement("img");img.src = e.image;img.alt = "";img.loading = "lazy";img.decoding = "async";
+        thumb.append(img);
+      } else {
+        thumb.innerHTML = `<i data-lucide="${e.audio ? "phone" : "search"}"></i>`;
       }
+      const text = document.createElement("span");text.className = "perception-text";
+      text.append(code,name,summary);
+      if (e.id === "E10" && state.extras) {
+        const extra = document.createElement("span");extra.className = "perception-summary";
+        extra.textContent = extras.slice(0,state.extras).join(". ") + ".";
+        text.append(extra);
+      }
+      button.append(thumb,text);
       button.addEventListener("click",() => openEvidence(e.id));
       item.append(button);
       return item;
     }));
+    if (window.lucide) lucide.createIcons();
   }
   function setTab(id) {
-    for (const tab of ["insights","notes"]) {
+    for (const tab of ["perceptions","suspects","notes"]) {
       $(`#${tab}-panel`).hidden = tab !== id;
       $(`#tab-${tab}`).setAttribute("aria-selected",String(tab === id));
       $(`#tab-${tab}`).classList.toggle("primary",tab === id);
     }
   }
+  $("#tab-suspects").onclick = () => setTab("suspects");
   $("#tab-notes").onclick = () => setTab("notes");
-  $("#tab-insights").onclick = () => setTab("insights");
-  setTab("insights");
+  $("#tab-perceptions").onclick = () => setTab("perceptions");
+  setTab("perceptions");
 
   /* Suspeitos: a equipe cadastra nome e descrição; cada perfil abre em modo de edição ao ser selecionado. */
   let editingSuspect = null;
@@ -493,7 +521,7 @@
     const list = $("#choice-list");
     if (!state.suspects.length) {
       const empty = document.createElement("p");empty.className = "muted";
-      empty.textContent = "Nenhum suspeito registrado. Adicionem suspeitos na seção Suspeitos antes de decidir.";
+      empty.textContent = "Nenhum suspeito registrado. Adicionem suspeitos na aba Suspeitos do Caderno antes de decidir.";
       list.replaceChildren(empty);
       return;
     }
@@ -507,7 +535,7 @@
   $("#verdict-form").addEventListener("submit",event => {
     event.preventDefault();
     const chosen = state.suspects.find(suspect => suspect.id === state.selected);
-    if (!chosen) {notify("Selecione um suspeito antes de confirmar.");($("#choice-list .choice") || $("[data-go=suspects]")).focus();return;}
+    if (!chosen) {notify("Selecione um suspeito antes de confirmar.");($("#choice-list .choice") || $("[data-go=notebook]")).focus();return;}
     const justification = $("#verdict_justification").value.trim();
     if (!justification) {notify("Escreva a justificativa do veredito.");$("#verdict_justification").focus();return;}
     const answers = {};
@@ -743,7 +771,7 @@
         state = fresh();pdfBlob = null;pdfFilename = "";
         document.querySelectorAll("[data-field],[data-verdict]").forEach(input => input.value = "");
         $("#suspect-form").reset();editingSuspect = null;renderSuspects();
-        setTab("insights");updateProgress();closeModal(false);go("opening");sceneMemory = null;notify("Sessão reiniciada.");
+        setTab("perceptions");updateProgress();closeModal(false);go("opening");sceneMemory = null;notify("Sessão reiniciada.");
       },"ui-btn danger"]
     ]);
   }

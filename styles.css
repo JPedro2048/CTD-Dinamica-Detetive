@@ -53,11 +53,11 @@ h1,h2,h3{font-family:var(--font-sans);font-weight:800;letter-spacing:.03em;margi
 @media(max-width:650px){.main-inner{padding:16px}.panel{padding:18px}.marker{height:40px;min-width:40px}.topbar .main-inner{padding-top:10px;padding-bottom:7px}.intro-art{max-width:300px}}
 .evidence-audio{margin:16px 0 0;background:var(--wave-purple) var(--purple);border:3px solid var(--yellow);border-radius:18px;padding:14px 16px}
 .evidence-audio .eyebrow{margin:0 0 8px}.evidence-audio audio{display:block;width:100%}
-.insight-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
-.insight-item{display:grid;gap:4px;width:100%;text-align:left;background:#ffffff0f;color:var(--white);border:2px solid transparent;border-left:6px solid var(--yellow);border-radius:16px;padding:14px 18px;transition:background .2s,border-color .2s}
-.insight-item:hover{background:#ffffff1f;border-color:var(--yellow)}
-.insight-item .eyebrow{font-size:.72rem}.insight-item strong{font-size:1.1rem}.insight-summary{color:#f3eaff}
-.insight-empty{color:#f3eaff;padding:14px 18px;border:2px dashed #ffffff40;border-radius:16px}
+.perception-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.perception-item{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#ffffff0f;color:var(--white);border:2px solid transparent;border-left:6px solid var(--yellow);border-radius:16px;padding:14px 18px;transition:background .2s,border-color .2s}
+.perception-item:hover{background:#ffffff1f;border-color:var(--yellow)}
+.perception-item .eyebrow{font-size:.72rem}.perception-item strong{font-size:1.1rem}.perception-summary{color:#f3eaff}
+.perception-empty{color:#f3eaff;padding:14px 18px;border:2px dashed #ffffff40;border-radius:16px}
 /* Cartões de suspeito cadastrados pela equipe: o cartão inteiro é um botão que abre a edição. */
 .suspect-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:100%;text-align:left;font:inherit;cursor:pointer;transition:transform .2s,box-shadow .2s}
 button.suspect-card:hover{transform:translateY(-3px);box-shadow:0 0 0 4px var(--ink),0 18px 40px #2a0a5e55}
@@ -89,7 +89,7 @@ body.app-shell{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
 #scene.scene-zoomed .scene-frame img{height:100%;width:auto;max-width:none}
 body.scene-zoom-open{overflow:hidden}
 /* As lupas da cena principal só aparecem com a cena ampliada. */
-#scene:not(.scene-zoomed) #scene-frame .marker{display:none}
+#scene:not(.scene-zoomed) #scene-frame .marker,#scene:not(.scene-zoomed) #scene-frame .marker-label{display:none}
 /* Cena ampliada: controle de rolagem na base da cena, logo acima da barra de abas. */
 #scene.scene-zoomed .scene-zoom-bar{order:2;border-bottom:0;border-top:4px solid var(--yellow)}
 /* Anotações: um único campo livre, alto o bastante para o registro da equipe. */
@@ -116,3 +116,17 @@ body.scene-zoom-open{overflow:hidden}
 /* Retrato do especialista: silhueta escura sobre círculo amarelo, como as ilustrações redondas do template. */
 .expert-portrait{width:min(180px,55%);aspect-ratio:1;margin:4px auto 6px;border-radius:50%;overflow:hidden;background:var(--yellow);border:5px solid var(--yellow);box-shadow:0 0 0 6px var(--ink),0 0 0 9px var(--purple);display:flex;align-items:flex-end;justify-content:center}
 .expert-portrait img{display:block;width:82%;height:auto;max-height:100%}
+/* Balões das pistas sem legenda na ilustração: mesmas proporções dos balões originais (medidos na imagem). */
+#scene-frame{--scene-width:768px}
+#scene-frame .marker{z-index:2}
+.marker-label{position:absolute;z-index:1;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;height:calc(var(--scene-width) * .026);padding:0 calc(var(--scene-width) * .047);border-radius:calc(var(--scene-width) * .008);background:#3a3b38;color:#f5f5f5;font-family:var(--font-sans);font-weight:500;font-size:calc(var(--scene-width) * .0115);letter-spacing:.05em;line-height:1;white-space:nowrap;pointer-events:none;box-shadow:0 2px 4px #0000002e}
+.marker-label::after{content:"";position:absolute;left:calc(var(--scene-width) * .035);bottom:calc(var(--scene-width) * -.006);width:calc(var(--scene-width) * .012);height:calc(var(--scene-width) * .012);background:inherit;transform:rotate(45deg)}
+/* Suspeitos como sub-aba do Caderno: o formulário e os cartões ficam direto sobre o fundo roxo. */
+.suspects-panel>.muted{margin-top:0}
+/* Miniaturas nas Percepções: imagem da pista à esquerda do texto. */
+.perception-text{display:grid;gap:4px;min-width:0;flex:1}
+.perception-thumb{flex:0 0 auto;width:64px;height:64px;border-radius:12px;overflow:hidden;background:var(--white);border:2px solid var(--yellow);display:grid;place-items:center;color:var(--ink)}
+.perception-thumb.round{border-radius:50%}
+.perception-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.perception-thumb svg{width:26px;height:26px}
+@media(max-width:400px){.perception-thumb{width:52px;height:52px}}

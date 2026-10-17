@@ -30,7 +30,7 @@
   </header>
   <nav id="tab-bar" class="tab-bar" aria-label="Navegação da investigação" hidden="">
    <div class="nav-buttons">
-     <button data-template-id="nav-scene" class="canva-button ui-btn" data-go="scene" type="button" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">CENA DO CRIME</button> <button data-template-id="nav-notebook" class="canva-button ui-btn" data-go="notebook" type="button" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">CADERNO</button> <button data-template-id="nav-suspects" class="canva-button ui-btn" data-go="suspects" type="button" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">SUSPEITOS</button> <button data-template-id="nav-verdict" class="canva-button ui-btn" data-go="verdict" type="button" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">PREPARAR VEREDITO</button>
+     <button data-template-id="nav-scene" class="canva-button ui-btn" data-go="scene" type="button" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">CENA DO CRIME</button> <button data-template-id="nav-notebook" class="canva-button ui-btn" data-go="notebook" type="button" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">CADERNO</button> <button data-template-id="nav-verdict" class="canva-button ui-btn" data-go="verdict" type="button" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">PREPARAR VEREDITO</button>
    </div>
   </nav>
   <main class="main-inner">
@@ -42,8 +42,8 @@
       <h1 data-template-id="opening-title" class="canva-text" style="color: rgb(239, 221, 43); font-weight: 800; font-style: normal; font-size: 46px;">Academia de Investigação</h1>
       <h2 data-template-id="opening-subtitle" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 28px;">O Caso do Quarto 307</h2>
       <p data-template-id="opening-motto" class="canva-text font-semibold" style="color: rgb(239, 221, 43); font-weight: 700; font-style: normal; font-size: 16px;">Observe os detalhes. Questione as aparências. Reconstrua os fatos.</p>
-      <p data-template-id="opening-intro" class="canva-text muted leading-relaxed" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">Um crime foi cometido em um quarto de hotel. Os relatos e registros parecem contraditórios. Investiguem a cena, relacionem evidências e construam uma conclusão fundamentada em equipe.</p>
-      <p data-template-id="opening-role" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Para começar, iniciem a investigação. As lupas revelarão pistas; o caderno guardará as hipóteses da equipe nesta sessão.</p>
+      <p data-template-id="opening-intro" class="canva-text muted leading-relaxed" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">Um crime aconteceu no quarto 307 de um hotel. Examinem a cena, reúnam as pistas e conversem em equipe para descobrir o que aconteceu.</p>
+      <p data-template-id="opening-role" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Toquem em “Iniciar investigação” para começar. O que a equipe encontrar e anotar fica salvo enquanto esta aba do navegador estiver aberta.</p>
       <div class="flex flex-wrap gap-3 mt-5">
        <button id="start" data-template-id="start-button" class="canva-button ui-btn primary" type="button" style="background: rgb(239, 221, 43); color: rgb(22, 22, 22); font-weight: 700; font-style: normal; font-size: 16px;">INICIAR INVESTIGAÇÃO</button><button id="download-offline-opening" data-template-id="download-offline-button" class="canva-button ui-btn" type="button" hidden="" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">BAIXAR PROJETO OFFLINE</button>
       </div>
@@ -57,9 +57,9 @@
    <section id="scene" class="screen" hidden="">
     <p data-template-id="scene-eyebrow" class="canva-text eyebrow" style="color: rgb(239, 221, 43); font-weight: 400; font-style: normal; font-size: 16px;">LOCAL · HOTEL · FIM DA TARDE</p>
     <h2 data-template-id="scene-title" class="canva-text" style="color: rgb(239, 221, 43); font-weight: 700; font-style: normal; font-size: 34px;">Cena do crime</h2>
-    <p data-template-id="scene-instruction" class="canva-text muted" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">Ampliem a cena para revelar as lupas sobre os objetos. As pistas já visitadas ficam douradas; a cor não indica se uma hipótese está correta.</p>
+    <p data-template-id="scene-instruction" class="canva-text muted" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">Toquem no botão de lupa no canto da imagem para ampliar a cena. Depois, toquem nas lupas sobre os objetos para examiná-los; as pistas já examinadas ficam douradas.</p>
     <div id="scene-zoom-bar" class="scene-zoom-bar" hidden="">
-     <button id="scene-zoom-out" type="button" class="scene-zoom-btn" aria-label="Reduzir a cena"><i data-lucide="search-slash" aria-hidden="true"></i></button>
+     <button id="scene-zoom-out" type="button" class="scene-zoom-btn" aria-label="Voltar à cena reduzida"><i data-lucide="undo-2" aria-hidden="true"></i></button>
      <input id="scene-pan" class="scene-pan" type="range" min="0" max="1000" value="500" aria-label="Navegar pela cena na horizontal">
     </div>
     <div id="scene-viewport" class="scene-viewport mt-5">
@@ -86,31 +86,29 @@
    <section id="notebook" class="screen" hidden="">
     <p data-template-id="notebook-eyebrow" class="canva-text eyebrow" style="color: rgb(239, 221, 43); font-weight: 400; font-style: normal; font-size: 16px;">REGISTRO DA EQUIPE</p>
     <h2 data-template-id="notebook-title" class="canva-text" style="color: rgb(239, 221, 43); font-weight: 700; font-style: normal; font-size: 34px;">Caderno de investigação</h2>
-    <p data-template-id="notebook-help" class="canva-text muted" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">Registrem apenas o que a equipe concluiu. Os campos são guardados automaticamente durante esta sessão.</p>
+    <p data-template-id="notebook-help" class="canva-text muted" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">Em Percepções ficam as pistas já examinadas. Em Suspeitos, a equipe registra quem considera suspeito. Em Anotações, escreve livremente. Tudo é salvo automaticamente.</p>
     <div class="tab-row" role="tablist" aria-label="Seções do caderno">
-     <button data-template-id="tab-insights" id="tab-insights" type="button" role="tab" class="canva-tabs ui-btn" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">INSIGHTS</button> <button data-template-id="tab-notes" id="tab-notes" type="button" role="tab" class="canva-tabs ui-btn" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">ANOTAÇÕES</button>
+     <button data-template-id="tab-perceptions" id="tab-perceptions" type="button" role="tab" class="canva-tabs ui-btn" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">PERCEPÇÕES</button> <button data-template-id="tab-suspects" id="tab-suspects" type="button" role="tab" class="canva-tabs ui-btn" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">SUSPEITOS</button> <button data-template-id="tab-notes" id="tab-notes" type="button" role="tab" class="canva-tabs ui-btn" style="background: rgb(22, 22, 22); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">ANOTAÇÕES</button>
     </div>
-    <div id="insights-panel" class="panel" role="tabpanel" aria-labelledby="tab-insights" hidden="">
-     <p data-template-id="insights-help" class="canva-text muted" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">Registro automático dos elementos examinados na cena, na ordem em que a equipe os encontrou. Selecionem um item para rever a pista completa.</p>
-     <ol id="insight-list" class="insight-list"></ol>
+    <div id="perceptions-panel" class="panel" role="tabpanel" aria-labelledby="tab-perceptions" hidden="">
+     <p data-template-id="perceptions-help" class="canva-text muted" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">As pistas aparecem aqui à medida que são examinadas. Toquem em uma para vê-la de novo.</p>
+     <ol id="perception-list" class="perception-list"></ol>
+    </div>
+    <div id="suspects-panel" class="suspects-panel" role="tabpanel" aria-labelledby="tab-suspects" hidden="">
+     <p data-template-id="suspects-help" class="canva-text muted" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">Adicionem as pessoas que a equipe considera suspeitas, com o nome e uma descrição breve. Toquem em um cartão para editá-lo ou removê-lo.</p>
+     <form id="suspect-form" class="panel mt-5" novalidate>
+      <h3 data-template-id="suspect-form-title" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 22px;">Novo suspeito</h3>
+      <div class="field"><label data-template-id="suspect-name-label" class="canva-text" for="suspect_name" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Nome do suspeito</label><input id="suspect_name" maxlength="60" autocomplete="off">
+      </div>
+      <div class="field"><label data-template-id="suspect-description-label" class="canva-text" for="suspect_description" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Descrição breve</label><textarea id="suspect_description" maxlength="240"></textarea>
+      </div><button data-template-id="add-suspect-button" type="submit" class="canva-button ui-btn primary" style="background: rgb(239, 221, 43); color: rgb(22, 22, 22); font-weight: 700; font-style: normal; font-size: 16px;">ADICIONAR SUSPEITO</button>
+     </form>
+     <div id="suspect-list" class="suspect-grid mt-5" aria-live="polite"></div>
     </div>
     <div id="notes-panel" class="panel" role="tabpanel" aria-labelledby="tab-notes" hidden="">
      <div class="field"><label data-template-id="notes-label" class="canva-text" for="team_notes" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Anotações da equipe</label><textarea id="team_notes" class="notes-field" data-field="notes"></textarea>
      </div>
     </div>
-   </section>
-   <section id="suspects" class="screen" hidden="">
-    <p data-template-id="suspects-eyebrow" class="canva-text eyebrow" hidden="" style="color: rgb(239, 221, 43); font-weight: 400; font-style: normal; font-size: 16px;">PERFIS DA EQUIPE · NENHUM PERFIL É PROVA</p>
-    <h2 data-template-id="suspects-title" class="canva-text" style="color: rgb(239, 221, 43); font-weight: 700; font-style: normal; font-size: 34px;">Suspeitos</h2>
-    <p data-template-id="suspects-help" class="canva-text muted" style="color: rgb(243, 234, 255); font-weight: 400; font-style: normal; font-size: 16px;">Registrem as pessoas que a equipe considera suspeitas, com uma breve descrição. Selecionem um perfil para editá-lo. Aparência e comportamento não são provas.</p>
-    <form id="suspect-form" class="panel mt-5" novalidate>
-     <h3 data-template-id="suspect-form-title" class="canva-text" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 22px;">Novo suspeito</h3>
-     <div class="field"><label data-template-id="suspect-name-label" class="canva-text" for="suspect_name" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Nome do suspeito</label><input id="suspect_name" maxlength="60" autocomplete="off">
-     </div>
-     <div class="field"><label data-template-id="suspect-description-label" class="canva-text" for="suspect_description" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Descrição breve</label><textarea id="suspect_description" maxlength="240"></textarea>
-     </div><button data-template-id="add-suspect-button" type="submit" class="canva-button ui-btn primary" style="background: rgb(239, 221, 43); color: rgb(22, 22, 22); font-weight: 700; font-style: normal; font-size: 16px;">ADICIONAR SUSPEITO</button>
-    </form>
-    <div id="suspect-list" class="suspect-grid mt-5" aria-live="polite"></div>
    </section>
    <section id="verdict" class="screen" hidden="">
     <p data-template-id="verdict-eyebrow" class="canva-text eyebrow" style="color: rgb(239, 221, 43); font-weight: 400; font-style: normal; font-size: 16px;">DECISÃO FUNDAMENTADA</p>
